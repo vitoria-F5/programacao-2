@@ -4,19 +4,19 @@
 * "APNP" se refere a atividades avaliativas já feitas por mim.
 
 ### Conteúdo das pastas:
-Revisão de Prog I (listas, condicionais, repetições, funções)
+* Revisão de Prog I (listas, condicionais, repetições, funções)
 
-Introdução ao Processamento de Strings
+* Introdução ao Processamento de Strings
 
-Introdução ao Processamento de Dicionários
+* Introdução ao Processamento de Dicionários
 
-Introdução ao Processamento de Arquivos
+* Introdução ao Processamento de Arquivos
 
-Modelagem de Dados
+* Modelagem de Dados
 
-Técnicas de Busca e Ordenação
+* Técnicas de Busca e Ordenação
 
-Matrizes Numéricas
+* Matrizes Numéricas
 
 Esse reposório se destina a organização das minhas atividades na matéria de programação 2.
 
