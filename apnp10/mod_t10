@@ -1,0 +1,131 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+#  mod_t10.py
+#  
+#  Copyright 2021 Vitória <Vitória@DESKTOP-8NUNN4I>
+#
+#  Autora: Vitória Isabel Lemos de Mattos
+#  Matricula: 20201tiimi0195
+#
+# Este programa: Este programa lê dados em um arquivo de texto, transforma em um dicionário e ordena. 
+# Por último realiza atividades de compra e controle de estoque.
+
+###########################
+#Código fonte em Python 3
+###########################
+
+# Função que passa os valores para o dicionário
+def valores(data):
+	
+	# Declaração de Dados 
+	nomeP = str() 
+	vendaP = float() 
+	quantidadeEst = int() 
+	quantidadeVen = int() 
+	dicProdutos = dict()
+	lista = list() 
+	linha1 = list()
+	
+	# Processamento de leitura de arquivos 
+	linha = data.readline()
+	
+	# Entrada de Dados 
+	while linha != "":
+		linha1 = linha.split(';') 
+		nomeP = str(linha1[0])
+		vendaP = float(linha1[1])
+		quantidadeEst = int(linha1[2])
+		quantidadeVen = int(linha1[3])
+		
+		# Processamento - Dicionário de produtos
+		dicProdutos[nomeP] = [vendaP, quantidadeEst, quantidadeVen]
+		
+		linha = data.readline()
+	return dicProdutos
+	
+# Função para atualizar o dicionário
+def atualiza_Dicionario(dicProdutos):
+	
+	# Declaração de Variáveis
+	quantoDeseja = int(0) 
+	
+	# Entrada de Dados
+	nomeP = input()
+	
+	# Processamento - Loop para cadastrar vendas
+	while nomeP != "FIM":
+		quantoDeseja = int(input())
+		
+		# Condicionais 
+		if not nomeP in dicProdutos:
+			print("PRODUTO INEXISTENTE")
+			
+		else:
+			if quantoDeseja > (dicProdutos[nomeP][1] - dicProdutos[nomeP][2]):
+				print("QUANTIDADE EM ESTOQUE INSUFICIENTE")
+				
+			else:
+				if quantoDeseja < (dicProdutos[nomeP][1] - dicProdutos[nomeP][2]):
+					print("COMPRA REALIZADA COM SUCESSO")
+					
+					dicProdutos[nomeP][2] += quantoDeseja
+						
+		nomeP = input()
+	return dicProdutos
+	
+# Função para serializar
+def serializa(dicProdutos):
+		'''
+		{} Inicia Objeto/ Fecha Objeto
+		[] Inicia Array/Fecha Array 
+		: Separador de Nome e Valor
+		, Separador de Valor e Pares
+		'''
+		# Declaração e variáveis
+		vendas = float(0.0) 
+		
+		# Importando o json
+		import json
+		
+		# Gravando dados em um arquivo JSON
+		 # Abre o arquivo dados.json em modo leitura, json.dump grava com identação 4
+		with open("dados.json", "w") as file:
+			json.dump(dicProdutos, file, indent = 4)
+			
+# Função para Imprimir
+def imprima(dicProdutos):
+	
+	# Declaração de Variáveis  
+	lista1 = list()
+	
+	# Processamento 1 - Loop para ordernar a lista 'lista1'
+	for k in dicProdutos: 
+		lista1.append(k)
+	lista1.sort()
+	
+	#Processamento 2 - Loop para imprir o produto e a quantidade vendida
+	for i in lista1:
+		vendas = dicProdutos[i][2] * dicProdutos[i][0]
+		
+		# Saída de Dados 
+		print(f'PRODUTO={i} VENDAS={vendas:.2f}')
+		
+def imprimaCon(escrita, dicProdutos):
+	
+	# Declaração de Variáveis  
+	lista1 = list()
+	
+	# Processamento 1
+	for k in dicProdutos: 
+		lista1.append(k)
+	lista1.sort()
+	
+	#Processamento 2
+	for i in lista1:
+		vendas = dicProdutos[i][2] * dicProdutos[i][0]
+		
+		# Saída de Dados 
+		escrita.write(f'PRODUTO={i} VENDAS={vendas:.2f}\n')
+
+
