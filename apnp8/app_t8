@@ -1,1 +1,34 @@
-.
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#  Copyright 2021 Vitória <Vitória@DESKTOP-8NUNN4I>
+#  
+#  Autora: Vitória Isabel Lemos de Mattos
+#  Matricula: 20201tiimi0195
+#
+#  Este programa: Cria, preenche, ordena por imc e imprime uma lista de produtos por meio de manipulação de arquivos.
+
+###########################
+#Código fonte em Python 3
+###########################
+
+import mod_p1
+
+def main(): # Dúvida na ordem de execução da aplicação
+	
+	#Leitura dos nomes dos arquivos / Pergunta o nome do livro que vai abrir
+	nomeArqIn = input()
+	nomeArqOut = input()
+	
+	dados = open(nomeArqIn, "r") 
+	escrita = open(nomeArqOut, "w")
+	
+	cadastroP = mod_p1.criaPreenche(dados) # Invocando função (a)
+	mod_p1.ordena_lista(cadastroP) # Invocando a função (b)
+	mod_p1.imprima(cadastroP, escrita) # Invocando a função (c)
+	# Fechando os arquivos de entrada e saída
+	dados.close()
+	escrita.close()
+	
+	
+if __name__ == "__main__":
+	main()
