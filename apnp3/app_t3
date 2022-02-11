@@ -1,0 +1,17 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+#  app_apnp3.py
+#  
+#  Copyright 2021 Vitória <Vitória@DESKTOP-8NUNN4I>
+#  Autora: Vitória Isabel Lemos de Mattos
+#  Matricula: 20201tiimi0195
+#
+############################
+# Código fonte em Python 3
+###########################
+
+def mod_apnp3(p, a):
+	imc = float(0.0)
+	imc = p / (a**2)
+	return imc
