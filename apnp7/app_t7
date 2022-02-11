@@ -1,0 +1,45 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+#  mod_t7.py
+#  
+#  Copyright 2021 Vitória <Vitória@DESKTOP-8NUNN4I>
+#
+#  Autora: Vitória Isabel Lemos de Mattos
+#  Matricula: 20201tiimi0195
+#
+#  Este programa: Cria, preenche, ordena por imc e imprime uma lista de estudantes por meio de manipulação de arquivos
+
+###########################
+#Código fonte em Python 3
+###########################
+
+import mod_t7
+def main():
+	# Declaração de variáveis
+	nomeArqIn = str()
+	nomeArqOut = str()
+	turminha = list()
+
+	#Leitura dos nomes dos arquivos / Pergunta o nome do livro que vai abrir
+	nomeArqIn = input()
+	nomeArqOut = input()
+
+	#Abertura dos arquivos / Abre o livro informado anteriormente 
+	arquivo = open(nomeArqIn, "r") # Abrindo o arquivo
+	arqOut = open(nomeArqOut, "w") #Abre para escrever
+
+	# Processamento 
+	turminha = mod_t7.f_preencheLista(arquivo) # A lista "turminha" é preenchida por uma função que tem parametro o "arquivo"
+	mod_t7.f_ordenaListaPorImc(turminha)
+
+	# Saída
+	mod_t7.f_imprimeLista(turminha)
+	mod_t7.f_imprimeLista2(turminha, arqOut)
+
+	# Fecha os arquivos / Fecha o livro informado anteriormente
+	arquivo.close()
+	arqOut.close()
+
+if __name__== "__main__":
+	main()
