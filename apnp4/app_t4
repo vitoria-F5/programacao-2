@@ -1,0 +1,21 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+#  app_apnp4.py
+#  
+#  Copyright 2021 
+#  
+#  Autor: Vitória Isabel Lemos de Mattos
+#  app_apnp4.py
+#  Matricula: 20201tiimi0195
+
+#Função principal, onde eu chamo******
+import mod_apnp4
+def main():
+    listinha =  mod_apnp4.f_preencheLista()
+    copia = listinha[:]
+    copia = mod_apnp4.f_ordenaLista(copia)
+    copia = mod_apnp4.f_verticalmente(copia)
+if __name__ == "__main__":
+    main()
+
