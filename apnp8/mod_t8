@@ -1,1 +1,100 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+#  mod_p1.py
+#  
+#  Copyright 2021 Vitória <Vitória@DESKTOP-8NUNN4I>
+#  
+#  Autora: Vitória Isabel Lemos de Mattos
+#  Matricula: 20201tiimi0195
+#
+#  Este programa: Cria, preenche, ordena por imc e imprime uma lista de produtos por meio de manipulação de arquivos.
 
+###########################
+#Código fonte em Python 3
+###########################
+
+# Função que CRIA e PREENCHE a lista
+def criaPreenche(dados):
+
+	# Declaração de variáveis
+	produto = list()
+	nomeP = str()
+	precoCompraC = float()
+	precoVenda = float()
+	quantidade = int()
+	cadastroP = list() 
+	linha = str()
+	volume = int()
+	linha = dados.readline() 
+	quantidade = int(linha) 
+	
+	for i in range(quantidade):
+		# Entrada de dados
+		linha = dados.readline()
+		nomeP = str(linha)
+		#print("nome: " + nomeP)
+		nomeP = nomeP[0:-1] #EAI?
+		
+		linha = dados.readline()
+		precoCompraC = float(linha)
+		#print(precoCompraC)
+		
+		linha = dados.readline()
+		precoVenda = float(linha)
+		#print(precoVenda)
+		
+		linha = dados.readline()
+		volume = int(linha)
+		#print(volume)
+		
+		produto = [nomeP, precoCompraC, precoVenda, volume]
+		cadastroP.append(produto) 
+		#print(cadastroP)
+	return cadastroP
+
+# Função para calcular o lucro absoluto
+def  calcula_LucroAbsoluto(precoVenda, precoCompraC): 
+	lucroAbsoluto = precoVenda - precoCompraC
+	
+	return lucroAbsoluto
+
+# Função para ordenar a lista crescentemente pelo lucro absoluto
+def ordena_lista(cadastroP):
+	# Declaração de variáveis
+	#trocas = 
+	lucroA1 = float(0.0)
+	lucroA2 = float(0.0)
+	
+	auxiliar = list() # Lista para auxiliar as trocas
+	trocas = 1
+	while trocas != 0:
+		trocas = 0
+		for i in range(len(cadastroP)-1):
+			lucroA1 = calcula_LucroAbsoluto(cadastroP[i][2], cadastroP[i][1])
+			lucroA2 = calcula_LucroAbsoluto(cadastroP[i + 1][2], cadastroP[i + 1][1])
+			if lucroA1 > lucroA2: # Comparando - crescente
+				auxiliar = cadastroP[i] # Iniciando as trocas
+				cadastroP[i] = cadastroP[i + 1]
+				cadastroP[i + 1] = auxiliar
+				trocas = trocas + 1
+
+def imprima(cadastroP, escrita):
+	lucroTotal = float(0.0) # Variável acumuladora
+	c = float(0.0) # Lucro absoluto 
+	for i in cadastroP:
+	# Declaração de variáveis
+		precoComp = i[1]
+		precoVend = i[2] 
+		
+		# Entrada de dados
+		#c = (precoVend - precoComp)
+		
+		c = (precoVend - precoComp)
+		lucroTotal = c * i[3] + lucroTotal
+		
+	# Saída
+		print(f'Produto: {i[0]}') # Nome do produto
+		print(f'Lucro absoluto: {(c):.2f}') # Lucro Absoluto
+		
+	print(f'Total arrecadado: {lucroTotal:.2f}')
