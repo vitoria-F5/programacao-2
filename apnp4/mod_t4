@@ -1,0 +1,53 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+#  apnp4.py
+#  
+#  Copyright 2021
+#  Autor: Vitória Isabel Lemos de Mattos
+#  mod_apnp4.py
+#  Matricula: 20201tiimi0195
+#
+#  Este programa: Preenche e cria uma lista. Ordena a lista decrescentemente. Imprime verticalmente
+
+###########################
+#Código fonte em Python 3
+###########################
+
+#Preenche e cria a lista
+def f_preencheLista():
+    #Declaração de variáveis
+    listinha = list()
+    i = int(0)
+    valor = str("")
+    
+    #Entrada de dados
+    valor = input()
+    
+    #Adicionando strings 
+    while valor != "FIM":
+        listinha.append(valor)
+        valor = input()
+    return listinha
+
+#Ordena a lista de nomes decrescentemente
+def f_ordenaLista(copia):
+    trocas = 1
+    
+    #Efetua a troca dos elementos da lista
+    while trocas > 0:
+        trocas = 0
+        for i in range(len(copia)-1):
+            if copia[i] < copia[i + 1]:
+                aux = copia[i]
+                copia[i] = copia[i + 1]
+                copia[i + 1] = aux
+                trocas = trocas + 1
+    return copia
+    
+#Coloca verticalmente
+def f_verticalmente(copia):
+    i = int(0)
+    for i in range(len(copia)): 
+      print(copia[i],end=" ")
+      print()
