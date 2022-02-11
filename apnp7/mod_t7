@@ -1,0 +1,103 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+#  mod_t7.py
+#  
+#  Copyright 2021 Vitória <Vitória@DESKTOP-8NUNN4I>
+#
+#  Autora: Vitória Isabel Lemos de Mattos
+#  Matricula: 20201tiimi0195
+#
+#  Este programa: Cria, preenche, ordena por imc e imprime uma lista de estudantes por meio de manipulação de arquivos
+
+###########################
+#Código fonte em Python 3
+###########################
+
+#  Função para criar e preencher a lista 
+def f_preencheLista(arq): 
+
+	#  Declaração de variáveis
+	aluno = list() #lista mais interna
+	quantidade = int() #quantidade de alunos
+	nome = str()
+	peso = float()
+	altura = float()
+	linha = str() 
+	turminha = list() #lista mais externa
+	contador = 0 
+
+	# Processamento de leitura de arquivos
+	linha = arq.readline() 
+	quantidade = int(linha)
+
+	for i in range(quantidade):
+		linha = arq.readline()
+		nome = str(linha)
+		nome = nome[0:-1]
+        
+		linha = arq.readline()
+		peso = float(linha)
+
+		linha = arq.readline()
+		altura = float(linha)
+
+		aluno = [nome, peso, altura]
+		turminha.append(aluno) 
+
+	return turminha
+
+# Função para calcular imc
+def calc_imc(peso, altura):
+
+	# Declaração de variáveis
+	imc = peso/(altura**2)
+
+	return imc
+
+# Função para ordenar a lista pelo imc
+def f_ordenaListaPorImc(turminha):
+
+	# Declaração de variáveis
+	trocas = int(1) 
+	imc1 = float(0.0) 
+	imcCompara = float(0.0) 
+	aux = list() # Variável auxiliar para intermediar as trocas
+
+	while trocas > 0:
+		trocas = 0 #zera a variável trocas
+
+		for i in range(len(turminha)-1): 
+			imc1 = calc_imc(turminha[i][1], turminha[i][2]) # Calculando o imc 
+			imcCompara = calc_imc(turminha[i + 1][1], turminha[i + 1][2]) # Calculando o imc do posterior
+
+			if imc1 > imcCompara: # Comparando 
+				aux = turminha[i] # Iniciando as trocas
+				turminha[i] = turminha[i + 1]
+				turminha[i + 1] = aux
+				trocas = trocas + 1 
+
+# Função para imprimir a lista no console
+def f_imprimeLista(turminha):
+	for i in turminha: 
+		print("Nome =" , i[0])
+
+		a = i[1]
+		print(f'Peso = {a:.2f}') # Formatação de string usando f string (2 casas decimais após a vírgula) - peso
+
+		b = i[2]
+		print(f'Altura = {b:.2f}') # Formatação de string usando f string (2 casas decimais após a vírgula) - altura
+
+		print(f'IMC = {a/(b**2):.2f}') # Formatação de string usando f string (2 casas decimais após a vírgula) - imc
+
+# Função para imprimir a lista no arquivo 
+def f_imprimeLista2(turminha, arqOut):
+
+	for i in turminha:
+		arqOut.write(i[0] + '\n') # Escrevendo nome no arquivo. Posição i[0] (nome), já é uma string e não precisa de conversão
+
+		peso = str(i[1]) # Conversão do peso float para string
+		arqOut.write(peso + '\n') # Escrevendo o peso no arquivo
+
+		altura = str(i[2]) # Conversão da altura float para string
+		arqOut.write(altura + '\n') # Escrevendo a altura no arquivo
