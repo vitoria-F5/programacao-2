@@ -1,0 +1,71 @@
+#  mod_t5.py
+#  Autor: Vitória Isabel Lemos de Mattos
+#  Matricula: 2020tiimi0195
+#  Este programa: Cria, preenche, ordena por imc e imprime uma lista de estudantes.
+
+###########################
+#Código fonte em Python 3
+###########################
+
+#  Função para criar e preencher a lista 
+def  f_preencheLista(qtd_alunos):
+    #  Declaração de variáveis
+    lst_turma = list() #PERGUNTA: eu preciso declarar lst_turma aqui? testei tirar (já que existe no outro arquivo) e deu erro.
+    nome = str("")
+    peso = float(0.0)
+    altura = float(0.0)
+    aluno = list()
+
+# Loop for 
+    for i in range(qtd_alunos):
+
+        #  Entrada de dados
+        nome = input()
+        peso = float(input())
+        altura = float(input())
+        aluno = [nome, peso, altura]
+
+        # Adiciona a lista lst_turma na lista aluna 
+        lst_turma.append(aluno)
+    return lst_turma 
+
+# Função para calcular imc
+def calc_imc(peso, altura):
+
+    # Declaração de variáveis
+    imc = peso/(altura**2)
+    return imc
+
+# Função para ordenar a lista pelo imc
+def f_ordenaListaPorImc(lst_turma):
+    # Declaração de variáveis
+    imcCompara = float(0.0)
+    imc1 = float(0.0)
+
+    trocas = 1
+    
+    # Variável temporária auxiliar. Ela vai intermediar as trocas
+    aux = list()
+
+    # Loop while
+    while trocas > 0:
+        trocas = 0
+        
+         # Loop for
+        for i in range(len(lst_turma)-1):
+            imc1 = calc_imc(lst_turma[i][1], lst_turma[i][2])
+            imcCompara = calc_imc(lst_turma[i + 1][1], lst_turma[i + 1][2])
+            
+            # Condicional que inicia as trocas
+            if imc1 > imcCompara:
+                aux = lst_turma[i]
+                lst_turma[i] = lst_turma[i + 1]
+                lst_turma[i + 1] = aux
+                trocas = trocas + 1 # Registra as trocas
+
+# Função para imprimir a lista
+def f_imprimeLista(lst_turma):
+    for i in lst_turma: 
+        print(i[0])
+        print(i[1])
+        print(i[2])
