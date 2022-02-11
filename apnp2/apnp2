@@ -1,0 +1,32 @@
+#  apnp2.py
+#  Autor: Vitória Isabel Lemos de Mattos
+#  Matricula: 2020tiimi0195
+#  Este programa: Lê/imprime 1 lista com nomes/sobrenomes de ordem inversa, onde a string vazia encerra a entrada de dados, juntamente com o tamanho da lista.
+
+###########################
+#Código fonte em Python 3
+###########################
+
+def main():   
+#Declaração de Variáveis 
+    lista1 = []
+    nome = str()
+    i = str()
+    indice = int(0)
+    
+#Entrada de dados não interativa
+    nome = input()
+
+    while nome != "":
+     lista1.append(nome)
+     nome = input()
+    for i in reversed(lista1):
+        
+#Saída
+        print(f'INDICE={indice} NOME={i}')
+        indice = indice + 1
+  
+    print(f'TOTAL DE NOMES={len(lista1)}') 
+    
+if __name__ == "__main__":
+    main()
