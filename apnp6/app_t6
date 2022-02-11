@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+# -- coding: utf-8 --
+#
+#  apnp6.py
+#
+#  Copyright 2021
+#  Autor: Vitória Isabel Lemos de Mattos
+#  Matricula: 20201tiimi0195
+#
+#  Este programa:
+#  Produz e
+#  Retorna como saída strings contendo os padrões identificados pelas letras de a) a f)
+
+###########################
+#Código fonte em Python 3
+###########################
+
+import mod_t6
+
+def main():
+
+	# Variaveis
+	letra = str("")
+	formas = str("")
+	forma = str("")
+	padrao = str("")
+	padroes = str("abcdef")
+
+	# Entrada de dados
+	padrao = input()
+
+	# Processamento
+	while padrao in padroes :
+		letra = input() # Entrada de dados
+
+		forma = mod_t6.f_imprimePadrao(letra, padrao)
+		formas += forma + '\n'
+
+		padrao = input() # Entrada de dados
+
+	# Saida de dados
+	print(formas)
+
+if __name__ == "__main__":
+	main()
