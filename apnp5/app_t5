@@ -1,0 +1,22 @@
+#  Autor: Vitória Isabel Lemos de Mattos
+#  Matricula: 2020tiimi0195
+#  Este programa: Cria, preenche, ordena por imc e imprime uma lista de estudantes.
+
+###########################
+#Código fonte em Python 3
+###########################
+
+import mod_t5
+def main():
+    #declaração de variáveis locais
+    lst_turma = list()
+    qtd_alunos = int()
+    #entrada de dados
+    qtd_alunos = int(input())
+    #processamento
+    lst_turma = mod_t5.f_preencheLista(qtd_alunos)
+    mod_t5.f_ordenaListaPorImc(lst_turma)
+    #saída de dados
+    mod_t5.f_imprimeLista(lst_turma)
+if __name__ == "__main__":
+    main()
