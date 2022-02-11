@@ -14,7 +14,7 @@
 #Código fonte em Python 3
 ###########################
 
-import mod_t9
+import mod_t1
 def main():
 	arqIn = input()
 	arqOut = input()
@@ -22,13 +22,12 @@ def main():
 	dados = open(arqIn, "r") # Arrumar nome dos arquivos
 	escrita = open(arqOut, "w")
 	
-	cadastroCU =  mod_t9.criaPreenche(dados)
-	mod_t9.ordena_lista(cadastroCU)
-	mod_t9.imprima(cadastroCU, escrita)
+	cadastroCU =  mod_t1.criaPreenche(dados)
+	mod_t1.ordena_lista(cadastroCU)
+	mod_t1.imprima(cadastroCU, escrita)
 	
 	# Fechando os arquivos de entrada e saída
 	dados.close()
 	escrita.close()
 if __name__ == "__main__":
 	main()
-
